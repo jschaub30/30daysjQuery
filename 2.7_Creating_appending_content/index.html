@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Appending content</title>
+        <style>
+            article {
+                width: 600px;
+                margin: auto;
+            }
+            blockquote.co {
+                font-size: 2em;
+                background: #e3e3e3;
+                float: right;
+                width: 35%;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+        <h1>My Awesome Post</h1>
+        <p>Lorem ipsum donec habitasse sapien et netus convallis lacus, sem taciti vel libero nulla turpis cursus habitasse, curabitur erat aliquet libero feugiat ut felis sem lorem porta arcu.</p>
+        <p>Inceptos adipiscing congue potenti nunc nulla feugiat, elit curabitur donec iaculis senectus adipiscing rhoncus, orci quam curabitur dictumst curabitur rhoncus quisque himenaeos massa interdum maecenas ut lobortis convallis, pharetra etiam phasellus ante dolor purus.</p>
+        <p><span class="co">Quam scelerisque augue suspendisse </span>lacus malesuada risus duis tincidunt ultricies morbi libero, inceptos vivamus neque cursus vel dapibus fringilla ornare dapibus a massa dictumst tellus consectetur tempor viverra himenaeos pharetra.</p>
+        <p>Lobortis per mi odio nam est fermentum placerat cubilia blandit justo, tortor vulputate condimentum quisque cubilia odio dictum consequat dictum litora integer, etiam feugiat mollis gravida lacinia cursus sodales porttitor blandit.</p>
+        <p>Porttitor vestibulum dictum sociosqu vehicula ac tincidunt quisque sapien, vivamus diam cras ut tempus accumsan porttitor tempus inceptos, imperdiet in consequat augue nostra quis mollis.</p>
+        </article>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>	
+
+        <script>
+            (function(){
+                $('h1').after('Hello after h1');
+                $('p').first().prepend('Hello before p<br/>');
+
+                $('<h2></h2>',{
+                text: 'Hello h2 element',
+                class: 'myClass',
+            }).appendTo('article');
+
+            $('<h2></h2>',{
+            text: 'Hello h2 after h1 element',
+            class: 'myClass',
+        }).insertAfter('h1');
+
+        var co = $('span.co').each(function(){
+            var $this = $(this);
+            $('<blockquote></blockquote>', {
+                class: 'co',
+                text: $this.text()
+            }).prependTo($this.closest('p'));
+        });
+    })();
+</script>
+</body>
+</html>
